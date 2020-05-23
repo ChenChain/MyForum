@@ -1,0 +1,10 @@
+server:
+  port: 9006
+
+spring:
+  application:
+    name: forum-spit
+  data:
+    mongodb:
+      host: 47.98.135.4
+      database: spitdb
