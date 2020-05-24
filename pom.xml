@@ -15,6 +15,7 @@
         <module>forum_article</module>
         <module>forum_gathering</module>
         <module>forum_spit</module>
+        <module>forum_search</module>
 
     </modules>
 
