@@ -1,5 +1,6 @@
 package com.chain.forum;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import util.IdWorker;
@@ -18,5 +19,8 @@ public class SpitApplication {
         return  new IdWorker(1,1);
     }
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpitApplication.class, args);
+    }
 
 }
