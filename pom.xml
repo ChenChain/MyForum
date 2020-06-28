@@ -16,7 +16,7 @@
         <module>forum_gathering</module>
         <module>forum_spit</module>
         <module>forum_search</module>
-
+        <module>forum_user</module>
     </modules>
 
     <packaging>pom</packaging>

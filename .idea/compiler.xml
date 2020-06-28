@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="forum_search" />
         <module name="forum_gathering" />
+        <module name="forum_user" />
         <module name="forum_common" />
         <module name="forum_base" />
         <module name="forum_article" />
@@ -28,6 +29,7 @@
       <module name="forum_recruit" options="-parameters" />
       <module name="forum_search" options="-parameters" />
       <module name="forum_spit" options="-parameters" />
+      <module name="forum_user" options="-parameters" />
     </option>
   </component>
 </project>

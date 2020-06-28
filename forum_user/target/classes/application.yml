@@ -1,0 +1,13 @@
+server: 
+  port: 9008
+spring: 
+  application:  
+    name: forum-user #指定服务名
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.98.135.4:3307/tensquare_user?characterEncoding=UTF8
+    username: root
+    password: cc123456
+  jpa: 
+    database: MySQL
+    show-sql: true
