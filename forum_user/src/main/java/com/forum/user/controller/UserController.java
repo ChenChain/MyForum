@@ -4,12 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.chain.user.pojo.User;
 import com.chain.user.service.UserService;
@@ -29,8 +24,17 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	
+
+	/**
+	 * 发送短信验证码
+	 * @param mobile
+	 */
+	@PostMapping(value="/sendsms/{mobile}")
+	public Result sendsms(@PathVariable String mobile ){
+		userService.sendSms(mobile);
+		return new Result(true,StatusCode.OK,"发送成功");
+	}
+
 	/**
 	 * 查询全部数据
 	 * @return

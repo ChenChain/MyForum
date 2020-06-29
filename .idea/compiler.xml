@@ -9,12 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="forum_search" />
         <module name="forum_gathering" />
-        <module name="forum_user" />
         <module name="forum_common" />
         <module name="forum_base" />
         <module name="forum_article" />
-        <module name="forum_recruit" />
         <module name="forum_spit" />
+        <module name="forum_recruit" />
+        <module name="forum_user" />
         <module name="forum_qa" />
       </profile>
     </annotationProcessing>
