@@ -1,18 +1,12 @@
 package com.chain.user.controller;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.chain.user.pojo.Admin;
-import com.chain.user.service.AdminService;
+import com.chain.user.pojo.User;
+import com.chain.user.service.UserService;
 
 import entity.PageResult;
 import entity.Result;
@@ -24,20 +18,29 @@ import entity.StatusCode;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/user")
+public class UserController {
 
 	@Autowired
-	private AdminService adminService;
-	
-	
+	private UserService userService;
+
+	/**
+	 * 发送短信验证码
+	 * @param mobile
+	 */
+	@PostMapping(value="/sendsms/{mobile}")
+	public Result sendsms(@PathVariable String mobile ){
+		userService.sendSms(mobile);
+		return new Result(true,StatusCode.OK,"发送成功");
+	}
+
 	/**
 	 * 查询全部数据
 	 * @return
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功",adminService.findAll());
+		return new Result(true,StatusCode.OK,"查询成功",userService.findAll());
 	}
 	
 	/**
@@ -47,7 +50,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable String id){
-		return new Result(true,StatusCode.OK,"查询成功",adminService.findById(id));
+		return new Result(true,StatusCode.OK,"查询成功",userService.findById(id));
 	}
 
 
@@ -60,8 +63,8 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<Admin> pageList = adminService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Admin>(pageList.getTotalElements(), pageList.getContent()) );
+		Page<User> pageList = userService.findSearch(searchMap, page, size);
+		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<User>(pageList.getTotalElements(), pageList.getContent()) );
 	}
 
 	/**
@@ -71,27 +74,27 @@ public class AdminController {
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
-        return new Result(true,StatusCode.OK,"查询成功",adminService.findSearch(searchMap));
+        return new Result(true,StatusCode.OK,"查询成功",userService.findSearch(searchMap));
     }
 	
 	/**
 	 * 增加
-	 * @param admin
+	 * @param user
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public Result add(@RequestBody Admin admin  ){
-		adminService.add(admin);
+	public Result add(@RequestBody User user  ){
+		userService.add(user);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
 	
 	/**
 	 * 修改
-	 * @param admin
+	 * @param user
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Admin admin, @PathVariable String id ){
-		admin.setId(id);
-		adminService.update(admin);		
+	public Result update(@RequestBody User user, @PathVariable String id ){
+		user.setId(id);
+		userService.update(user);		
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
 	
@@ -101,7 +104,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable String id ){
-		adminService.deleteById(id);
+		userService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
 	
