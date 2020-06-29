@@ -1,0 +1,19 @@
+# Default ignored files
+/.idea/workspace.xml
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+target/
+### Java template
+*.class
+
+*.iml
+
+## Directory-based serialId format:
+.idea/
+
+## File-based serialId format:
+*.ipr
+*.iws

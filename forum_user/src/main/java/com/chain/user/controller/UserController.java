@@ -35,6 +35,15 @@ public class UserController {
 	}
 
 	/**
+	 * 用户注册
+	 */
+	@PostMapping(value = "/register/{code}")
+	public Result register(@RequestBody User user,@PathVariable String code){
+		userService.add(user, code);
+		return new Result(true,StatusCode.OK,"注册成功");
+	}
+
+	/**
 	 * 查询全部数据
 	 * @return
 	 */

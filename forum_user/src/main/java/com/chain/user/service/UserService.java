@@ -65,6 +65,30 @@ public class UserService {
         rabbitTemplate.convertAndSend("sms", map);
     }
 
+    /**
+     * 用户注册 需要手机号验证
+     * @param user
+     * @param code
+     */
+    public void add(User user,String code){
+        String mecode = (String) redisTemplate.opsForValue().get("smscode_"+user.getMobile());
+        if (mecode==null){
+            throw  new RuntimeException("点击获取验证码");
+        }
+        if (!mecode.equals(code)){
+            throw  new RuntimeException("验证码不正确");
+        }
+        user.setId(idWorker.nextId()+"");
+        user.setFollowcount(0);//关注数
+        user.setFanscount(0);//粉丝数
+        user.setOnline(0L);//在线时长
+        user.setRegdate(new Date());//注册日期
+        user.setUpdatedate(new Date());//更新日期
+        user.setLastdate(new Date());//最后登陆日期
+        userDao.save(user);
+
+    }
+
 
     /**
      * 查询全部列表

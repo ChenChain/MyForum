@@ -17,6 +17,7 @@
         <module>forum_spit</module>
         <module>forum_search</module>
         <module>forum_user</module>
+        <module>forum_sms</module>
     </modules>
 
     <packaging>pom</packaging>
