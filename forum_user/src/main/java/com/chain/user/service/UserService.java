@@ -7,19 +7,23 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
+import io.jsonwebtoken.Claims;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import util.IdWorker;
 
 import com.chain.user.dao.UserDao;
 import com.chain.user.pojo.User;
+import util.JWTUtil;
 
 /**
  * 服务层
@@ -40,6 +44,19 @@ public class UserService {
     private RedisTemplate redisTemplate;
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+
+    /**
+     * 为了拿到request中的验证信息
+     */
+    @Autowired
+    private HttpServletRequest httpServletRequest;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     /**
      * 发送短信验证码
@@ -67,18 +84,20 @@ public class UserService {
 
     /**
      * 用户注册 需要手机号验证
+     *
      * @param user
      * @param code
      */
-    public void add(User user,String code){
-        String mecode = (String) redisTemplate.opsForValue().get("smscode_"+user.getMobile());
-        if (mecode==null){
-            throw  new RuntimeException("点击获取验证码");
+    public void add(User user, String code) {
+        String mecode = (String) redisTemplate.opsForValue().get("smscode_" + user.getMobile());
+        if (mecode == null) {
+            throw new RuntimeException("点击获取验证码");
         }
-        if (!mecode.equals(code)){
-            throw  new RuntimeException("验证码不正确");
+        if (!mecode.equals(code)) {
+            throw new RuntimeException("验证码不正确");
         }
-        user.setId(idWorker.nextId()+"");
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setId(idWorker.nextId() + "");
         user.setFollowcount(0);//关注数
         user.setFanscount(0);//粉丝数
         user.setOnline(0L);//在线时长
@@ -161,6 +180,10 @@ public class UserService {
      * @param id
      */
     public void deleteById(String id) {
+        String str= (String) httpServletRequest.getAttribute("claims_admin");
+        if (str==null||"".equals(str)){
+            throw  new RuntimeException("权限不足");
+        }
         userDao.deleteById(id);
     }
 
@@ -221,4 +244,11 @@ public class UserService {
 
     }
 
+    public User login(User user) {
+        User u = userDao.findByMobile(user.getMobile());
+        if (u != null && bCryptPasswordEncoder.matches(u.getPassword(), user.getPassword())) {
+            return u;
+        }
+        return null;
+    }
 }

@@ -12,6 +12,9 @@ import com.chain.qa.service.ProblemService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 控制器层
  * @author Administrator
@@ -21,6 +24,9 @@ import entity.StatusCode;
 @CrossOrigin
 @RequestMapping("/problem")
 public class ProblemController {
+
+	@Autowired
+	private HttpServletRequest httpServletRequest;
 
 	@Autowired
 	private ProblemService problemService;
@@ -101,6 +107,10 @@ public class ProblemController {
 	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public Result add(@RequestBody Problem problem  ){
+		String token= (String) httpServletRequest.getAttribute("claims_user");
+		if (token==null||token.equals("")){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
 		problemService.add(problem);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}

@@ -1,4 +1,5 @@
 package com.chain.user.controller;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import com.chain.user.service.UserService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import util.JWTUtil;
+
 /**
  * 控制器层
  * @author Administrator
@@ -23,6 +26,23 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private JWTUtil jwtUtil;
+
+	@PostMapping("login")
+	public Result login(@RequestBody User user){
+		User u=userService.login(user);
+		if (u==null){
+			return new Result(false,StatusCode.LOGINERROR,"登陆失败");
+		}
+		String token=	jwtUtil.createJWT(user.getId(),user.getMobile(),user.getPassword());
+		Map<String,Object> map=new HashMap<>();
+		map.put("token",token);
+		map.put("roles","user");
+
+		return new Result(true,StatusCode.OK,"登录成功",map);
+	}
 
 	/**
 	 * 发送短信验证码
