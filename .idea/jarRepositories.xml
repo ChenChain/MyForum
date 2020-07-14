@@ -7,6 +7,16 @@
       <option name="url" value="http://maven.lianjia.com/content/groups/Lianjia-Cprd-Group/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="Lianjia-Common-Releases" />
+      <option name="name" value="Lianjia-Common-Releases" />
+      <option name="url" value="http://maven.lianjia.com/content/groups/Lianjia-Cprd-Group/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Lianjia-Common-Releases" />
+      <option name="name" value="Lianjia-Common-Releases" />
+      <option name="url" value="http://maven.lianjia.com/content/repositories/Lianjia-Common-Releases/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -20,6 +30,26 @@
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="snapshots" />
+      <option name="url" value="http://maven.lianjia.com/content/groups/Lianjia-Cprd-Group/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="http://maven.lianjia.com/content/repositories/Lianjia-Cprd-Releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="http://maven.lianjia.com/content/groups/Lianjia-Cprd-Group/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="snapshots" />
+      <option name="url" value="http://maven.lianjia.com/content/repositories/Lianjia-Cprd-Snapshots/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />

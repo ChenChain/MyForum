@@ -2,6 +2,7 @@ package com.chain.qa.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.chain.qa.client.BaseClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,20 @@ public class ProblemController {
 
 	@Autowired
 	private ProblemService problemService;
+
+	@Autowired
+	private BaseClient baseClient;
+
+	/**
+	 * 测试微服务调用方法
+	 * @param labelId
+	 * @return
+	 */
+	@GetMapping("/find/{labelId}")
+	public Result findByIdz(@PathVariable("labelId") String labelId){
+		return  baseClient.findById(labelId);
+	}
+
 
 	/**
 	 * 问题的最新回答

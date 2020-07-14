@@ -8,15 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="forum_search" />
-        <module name="forum_qa" />
         <module name="forum_gathering" />
         <module name="forum_common" />
         <module name="forum_base" />
         <module name="forum_article" />
-        <module name="forum_recruit" />
+        <module name="forum_eureka" />
         <module name="forum_spit" />
-        <module name="forum_sms" />
+        <module name="forum_recruit" />
         <module name="forum_user" />
+        <module name="forum_sms" />
+        <module name="forum_qa" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,8 +25,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="forum_article" options="-parameters" />
       <module name="forum_common" options="-parameters" />
+      <module name="forum_eureka" options="-parameters" />
       <module name="forum_gathering" options="-parameters" />
-      <module name="forum_parent" options="-parameters" />
       <module name="forum_qa" options="-parameters" />
       <module name="forum_recruit" options="-parameters" />
       <module name="forum_search" options="-parameters" />

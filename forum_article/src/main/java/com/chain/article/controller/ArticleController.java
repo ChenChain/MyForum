@@ -39,7 +39,7 @@ public class ArticleController {
 	/**
 	 * 点赞
 	 */
-	@PutMapping("/examine/{articleId}")
+	@PutMapping("/thumbUp/{articleId}")
 	public Result thumbUp( @PathVariable String articleId){
 		articleService.addThumbUp(articleId);
 		return new Result(true,StatusCode.OK,"点赞成功");

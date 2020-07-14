@@ -46,7 +46,7 @@ public class JWTInterceptor implements HandlerInterceptor {
             }
         }
 
-        return false;
+        return true;
     }
 
     @Override
