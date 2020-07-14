@@ -17,3 +17,12 @@ target/
 ## File-based serialId format:
 *.ipr
 *.iws
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
