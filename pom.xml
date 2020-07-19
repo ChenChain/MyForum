@@ -19,6 +19,7 @@
         <module>forum_user</module>
         <module>forum_sms</module>
         <module>forum_eureka</module>
+        <module>forum_friend</module>
 
     </modules>
 

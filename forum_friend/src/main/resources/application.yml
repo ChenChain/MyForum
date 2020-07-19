@@ -1,0 +1,24 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: forum-friend
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.98.135.4:3307/tensquare_friend?characterEncoding=UTF8
+    username: root
+    password: 123456
+
+  jpa:
+    database: mysql
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+
+  instance:
+    prefer-ip-address: true
