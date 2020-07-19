@@ -61,4 +61,16 @@ public class FriendService {
         return 1;
     }
 
+    public void deleteFriend(String userid, String friendId) {
+        //删除
+        friendDao.deleteFriend(userid,friendId);
+        //更新like为0 表示单向喜欢
+        friendDao.updateLike("0",friendId,userid);
+
+        //不喜欢 非好友表添加数据
+        NoFriend noFriend=new NoFriend();
+        noFriend.setUserId(userid);
+        noFriend.setFriendId(friendId);
+        noFriendDao.save(noFriendDao);
+    }
 }

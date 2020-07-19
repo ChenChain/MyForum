@@ -1,5 +1,6 @@
 package com.forum.friend.controller;
 
+import com.forum.friend.client.UserClient;
 import com.forum.friend.service.FriendService;
 import entity.Result;
 import entity.StatusCode;
@@ -7,10 +8,7 @@ import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +28,9 @@ public class FriendController {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private UserClient userClient;
+
     @ApiOperation("添加好友或者非好友")
     @PutMapping("like/{friendId}/{type}")
     public Result addFriend(@PathVariable String friendId,@PathVariable String type){
@@ -47,6 +48,8 @@ public class FriendController {
                     return new Result(false, StatusCode.ERROR, "重复添加");
                 }
                 if (flag==1){
+                    //更新关注数与粉丝数
+                    userClient.updateFansCountAndFollowCount(userid,friendId,1);
                     return new Result(true, StatusCode.OK, "添加成功");
                 }
             }else if (type.equals("2")){
@@ -63,5 +66,23 @@ public class FriendController {
             }
         }
         return new Result(true, StatusCode.OK, "操作成功");
+    }
+
+    /**
+     * 删除好友关系
+     */
+    @DeleteMapping("/{friendId}")
+    public Result deleteFriend(@PathVariable String friendId){
+        //验证登录并拿到当前用户的id
+        Claims token= (Claims) request.getAttribute("claims_user");
+        if (token==null){
+            return new Result(false, StatusCode.ERROR,"无权访问");
+        }
+        String userid=token.getId();
+        friendService.deleteFriend(userid,friendId);
+
+        //更新关注数与粉丝数
+        userClient.updateFansCountAndFollowCount(userid,friendId,-1);
+        return new Result(true,StatusCode.OK,"删除成功");
     }
 }

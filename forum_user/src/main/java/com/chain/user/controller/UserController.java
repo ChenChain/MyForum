@@ -2,6 +2,7 @@ package com.chain.user.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,20 @@ public class UserController {
 
 	@Autowired
 	private JWTUtil jwtUtil;
+
+
+	/**
+	 * 微服务调用更新关注数与粉丝数
+	 * 粉丝与用户关注数
+	 * @param x -1或1 代表增加1个和减少1个
+	 * @return
+	 */
+	@PutMapping("/{userId}/{friendId}/{x}")
+	public void updateFansCountAndFollowCount(@PathVariable String userId,@PathVariable String friendId, @PathVariable int x){
+		userService.updateFansCountAndFollowCount(x,userId,friendId);
+	}
+
+
 
 	@PostMapping("login")
 	public Result login(@RequestBody User user){
