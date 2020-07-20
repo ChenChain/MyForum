@@ -1,0 +1,24 @@
+server:
+  port: 9011
+spring:
+  application:
+    name: forum-manager
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+
+  instance:
+    prefer-ip-address: true
+
+
+
+#网关配置部分
+zuul:
+  routes:
+    forum-base:
+      path: /base/**
+      servicdId: forum-base

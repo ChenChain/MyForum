@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/forum_gathering" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_gathering/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_gathering/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forum_manager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_qa" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_qa/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_qa/src/main/resources" charset="UTF-8" />
@@ -29,5 +30,6 @@
     <file url="file://$PROJECT_DIR$/forum_spit/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forum_user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forum_web/src/main/java" charset="UTF-8" />
   </component>
 </project>

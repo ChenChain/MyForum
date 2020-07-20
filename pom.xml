@@ -20,6 +20,8 @@
         <module>forum_sms</module>
         <module>forum_eureka</module>
         <module>forum_friend</module>
+        <module>forum_manager</module>
+        <module>forum_web</module>
 
     </modules>
 
