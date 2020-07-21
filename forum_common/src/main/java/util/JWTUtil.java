@@ -3,37 +3,23 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 import java.util.Date;
 /**
- * TODO
+ *
  * jwt工具类 生产token 校验token
  * @author chain
  * @date 2020/6/30
  */
+@Data
 public class JWTUtil {
     private String key ="CHAIN" ;
 
 
     private long ttl ;//一个小时
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public long getTtl() {
-        return ttl;
-    }
-
-    public void setTtl(long ttl) {
-        this.ttl = ttl;
-    }
 
     /**
      * 生成JWT

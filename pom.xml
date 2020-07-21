@@ -22,6 +22,7 @@
         <module>forum_friend</module>
         <module>forum_manager</module>
         <module>forum_web</module>
+        <module>forum_config</module>
 
     </modules>
 
