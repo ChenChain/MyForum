@@ -11,4 +11,6 @@ spring:
       server:
         git:
           uri: https://gitee.com/chainchain/forum_config_file.git
+          password: cq19990117
+          username: 1759683080@qq.com
 
