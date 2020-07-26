@@ -43,7 +43,7 @@ public class AdminController {
             return new Result(false, StatusCode.LOGINERROR, "登录失败");
         }
         //登录成功 生成token
-        String token=   jwtUtil.createJWT(a.getId(),a.getLoginname(),"admin");
+        String token=   jwtUtil.createJWT(a.getId(),a.getLoginName(),"admin");
         Map<String ,Object> map=new HashMap<>();
         map.put("token",token);
         map.put("role","admin");

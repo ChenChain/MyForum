@@ -37,7 +37,7 @@ public class JWTInterceptor implements HandlerInterceptor {
                         request.setAttribute("claims_admin",token);
                     }
                     if (role == null || token.equals("user")) {
-                        //为管理员
+                        //为用户
                         request.setAttribute("claims_user",token);
                     }
                 } catch (Exception e) {

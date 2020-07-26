@@ -145,7 +145,7 @@ public class AdminService {
 	}
 
 	public Admin login(Admin admin) {
-		Admin a=adminDao.findByLoginname(admin.getLoginname());
+		Admin a=adminDao.findByLoginName(admin.getLoginName());
 
 		if (a!=null&&bCryptPasswordEncoder.matches(admin.getPassword(),a.getPassword())){
 			return a;

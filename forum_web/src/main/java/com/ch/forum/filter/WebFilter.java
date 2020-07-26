@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author chenqian091
  * @date 2020-07-21
  */
-@Component
+//@Component
 public class WebFilter extends ZuulFilter {
 
 
@@ -21,17 +21,14 @@ public class WebFilter extends ZuulFilter {
     public String filterType() {
         return "pre";
     }
-
     @Override
     public int filterOrder() {
         return 0;
     }
-
     @Override
     public boolean shouldFilter() {
         return true;
     }
-
     /**
      * 网关请求中 header会丢失，使用zuul过滤器将header信息继续向下传递
      */

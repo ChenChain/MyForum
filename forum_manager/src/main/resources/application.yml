@@ -22,3 +22,6 @@ zuul:
     forum-base:
       path: /base/**
       servicdId: forum-base
+    forum-user:
+      path: /user/**
+      servicdId: forum-user
