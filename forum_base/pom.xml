@@ -42,6 +42,14 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
 
+
+
+
+<!--        springcloud bus使用rabbitmq-->
+
+
+
+
     </dependencies>
 
 
