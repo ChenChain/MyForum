@@ -29,5 +29,27 @@
         </dependency>
 
     </dependencies>
+    <build>
 
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+
+                    <mainClass>com.chain.recruit.RecruitApplication</mainClass>
+                    <mainClass>com.chain.search.SearchApplication</mainClass>
+                    <mainClass>com.chain.forum.SpitApplication</mainClass>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

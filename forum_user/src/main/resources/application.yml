@@ -5,9 +5,9 @@ spring:
     name: forum-user #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.98.135.4:3307/tensquare_user?characterEncoding=UTF8
+    url: jdbc:mysql://47.98.135.4:3306/forum_user?characterEncoding=UTF8
     username: root
-    password: 123456
+    password: cc123456
   jpa: 
     database: MySQL
     show-sql: true
@@ -25,7 +25,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/
+      defaultZone: http://47.98.135.4:6868/eureka/
 
   instance:
     prefer-ip-address: true

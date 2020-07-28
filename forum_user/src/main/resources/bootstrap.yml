@@ -4,4 +4,4 @@ spring:
       name: user
       profile: dev
       label: master
-      uri: http://127.0.0.1:12000
+      uri: http://47.98.135.4:12000

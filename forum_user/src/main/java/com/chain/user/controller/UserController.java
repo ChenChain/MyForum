@@ -60,7 +60,7 @@ public class UserController {
 	}
 
 	@ApiOperation("发送邮箱验证码")
-	@PostMapping(value="/sendmail/{email}")
+	@GetMapping(value="/sendmail/{email}")
 	public Result sendMail( @Param("邮箱") @PathVariable String email ){
 		userService.sendMail(email);
 		return new Result(true,StatusCode.OK,"发送成功");

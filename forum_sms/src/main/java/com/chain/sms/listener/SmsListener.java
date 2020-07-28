@@ -10,17 +10,17 @@ import java.util.Map;
 /**
  * 消息监听器
  */
-@Slf4j
-@Component
-@RabbitListener(queues = "sms")
-public class SmsListener {
-
-    /**
-     * 处理消息
-     * @param map
-     */
-    @RabbitHandler
-    public void  executeSms(Map<String,String> map){
-        log.info("消息处理 mobile:{} , checkCode:{}",map.get("mobile"),map.get("code"));
-    }
-}
+//@Slf4j
+//@Component
+//@RabbitListener(queues = "sms")
+//public class SmsListener {
+//
+//    /**
+//     * 处理消息
+//     * @param map
+//     */
+//    @RabbitHandler
+//    public void  executeSms(Map<String,String> map){
+//        log.info("消息处理 mobile:{} , checkCode:{}",map.get("mobile"),map.get("code"));
+//    }
+//}

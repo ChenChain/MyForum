@@ -20,8 +20,8 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
     public List<SwaggerResource> get() {
         List resources = new ArrayList<>();
         //一个 SwaggerResource对应一个微服务 ： 参数： 服务中文名 ， 路径：/zuul前缀/服务的routes访问路径//v2/api-docs  ； 版本
-        resources.add(swaggerResource("user-api", "/user/v2/api-docs", "1.0"));
-        resources.add(swaggerResource("label-api", "/base/v2/api-docs", "1.0"));
+        resources.add(swaggerResource("forum-user", "/user/v2/api-docs", "1.0"));
+        resources.add(swaggerResource("forum-base", "/base/v2/api-docs", "1.0"));
         return resources;
 
     }
