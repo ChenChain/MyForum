@@ -25,7 +25,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("分布式家教论坛")
                 .description("家教论坛接口文档说明")
-                .termsOfServiceUrl("http://127.0.0.1:9012") //zuul的地址
+                .termsOfServiceUrl("http://47.98.135.4:9012") //zuul的地址
                 .version("1.0")
                 .build();
     }

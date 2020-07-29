@@ -149,12 +149,12 @@ public class ArticleService {
                 	predicateList.add(cb.like(root.get("id").as(String.class), "%"+(String)searchMap.get("id")+"%"));
                 }
                 // 专栏ID
-                if (searchMap.get("columnid")!=null && !"".equals(searchMap.get("columnid"))) {
-                	predicateList.add(cb.like(root.get("columnid").as(String.class), "%"+(String)searchMap.get("columnid")+"%"));
+                if (searchMap.get("columnId")!=null && !"".equals(searchMap.get("columnId"))) {
+                	predicateList.add(cb.like(root.get("columnId").as(String.class), "%"+(String)searchMap.get("columnId")+"%"));
                 }
                 // 用户ID
-                if (searchMap.get("userid")!=null && !"".equals(searchMap.get("userid"))) {
-                	predicateList.add(cb.like(root.get("userid").as(String.class), "%"+(String)searchMap.get("userid")+"%"));
+                if (searchMap.get("userId")!=null && !"".equals(searchMap.get("userId"))) {
+                	predicateList.add(cb.like(root.get("userId").as(String.class), "%"+(String)searchMap.get("userId")+"%"));
                 }
                 // 标题
                 if (searchMap.get("title")!=null && !"".equals(searchMap.get("title"))) {
@@ -169,20 +169,20 @@ public class ArticleService {
                 	predicateList.add(cb.like(root.get("image").as(String.class), "%"+(String)searchMap.get("image")+"%"));
                 }
                 // 是否公开
-                if (searchMap.get("ispublic")!=null && !"".equals(searchMap.get("ispublic"))) {
-                	predicateList.add(cb.like(root.get("ispublic").as(String.class), "%"+(String)searchMap.get("ispublic")+"%"));
+                if (searchMap.get("needPublic")!=null && !"".equals(searchMap.get("needPublic"))) {
+                	predicateList.add(cb.like(root.get("needPublic").as(String.class), "%"+(String)searchMap.get("needPublic")+"%"));
                 }
                 // 是否置顶
-                if (searchMap.get("istop")!=null && !"".equals(searchMap.get("istop"))) {
-                	predicateList.add(cb.like(root.get("istop").as(String.class), "%"+(String)searchMap.get("istop")+"%"));
+                if (searchMap.get("needTop")!=null && !"".equals(searchMap.get("needTop"))) {
+                	predicateList.add(cb.like(root.get("needTop").as(String.class), "%"+(String)searchMap.get("needTop")+"%"));
                 }
                 // 审核状态
                 if (searchMap.get("state")!=null && !"".equals(searchMap.get("state"))) {
                 	predicateList.add(cb.like(root.get("state").as(String.class), "%"+(String)searchMap.get("state")+"%"));
                 }
                 // 所属频道
-                if (searchMap.get("channelid")!=null && !"".equals(searchMap.get("channelid"))) {
-                	predicateList.add(cb.like(root.get("channelid").as(String.class), "%"+(String)searchMap.get("channelid")+"%"));
+                if (searchMap.get("channelId")!=null && !"".equals(searchMap.get("channelId"))) {
+                	predicateList.add(cb.like(root.get("channelId").as(String.class), "%"+(String)searchMap.get("channelId")+"%"));
                 }
                 // URL
                 if (searchMap.get("url")!=null && !"".equals(searchMap.get("url"))) {

@@ -10,9 +10,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://47.98.135.4:6868/eureka/
-
   instance:
     prefer-ip-address: true
+
 
 
 
@@ -25,3 +25,24 @@ zuul:
     forum-user:
       path: /user/**
       servicdId: forum-user
+
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  eureka:
+    enabled: true
+
+

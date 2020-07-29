@@ -131,8 +131,8 @@ public class ColumnService {
                 	predicateList.add(cb.like(root.get("summary").as(String.class), "%"+(String)searchMap.get("summary")+"%"));
                 }
                 // 用户ID
-                if (searchMap.get("userid")!=null && !"".equals(searchMap.get("userid"))) {
-                	predicateList.add(cb.like(root.get("userid").as(String.class), "%"+(String)searchMap.get("userid")+"%"));
+                if (searchMap.get("userId")!=null && !"".equals(searchMap.get("userId"))) {
+                	predicateList.add(cb.like(root.get("userId").as(String.class), "%"+(String)searchMap.get("userId")+"%"));
                 }
                 // 状态
                 if (searchMap.get("state")!=null && !"".equals(searchMap.get("state"))) {

@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: web
+      profile: dev
+      label: master
+      uri: http://47.98.135.4:12000
+
+
