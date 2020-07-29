@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @author chain
  * @date 2020/6/30
  */
-@Configuration
+//@Configuration
 public class InterceptorConfig extends WebMvcConfigurationSupport {
 
 

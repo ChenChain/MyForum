@@ -45,7 +45,7 @@ public class RecruitService {
 	 * @return
 	 */
 	public List<Recruit> recommend(){
-		return  recruitDao.findTop6ByStateOrderByCreatetimeDesc("2");
+		return  recruitDao.findTop6ByStateOrderByCreateTimeDesc("2");
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class RecruitService {
 	 * @return
 	 */
 	public List<Recruit> newlist(){
-		return recruitDao.findTop6ByStateNotOrderByCreatetimeDesc("0");
+		return recruitDao.findTop6ByStateNotOrderByCreateTimeDesc("0");
 	}
 
 

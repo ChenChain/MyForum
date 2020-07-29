@@ -43,7 +43,7 @@ public class EnterpriseService {
 	 * 找到热门企业
 	 */
 	public List<Enterprise> hotList(String ishot){
-		return enterpriseDao.findByIshot(ishot);
+		return enterpriseDao.findByHot(ishot);
 	}
 
 	/**

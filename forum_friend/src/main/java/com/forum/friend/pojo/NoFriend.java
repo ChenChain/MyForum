@@ -2,10 +2,7 @@ package com.forum.friend.pojo;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -22,9 +19,11 @@ public class NoFriend implements Serializable {
 
 
     @Id
+    @Column(name = "user_id")
     private String userId;
 
     @Id
+    @Column(name = "friend_id")
     private String friendId;
 
 }

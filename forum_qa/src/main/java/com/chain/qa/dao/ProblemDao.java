@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.chain.qa.pojo.Problem;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
-
 /**
  * 数据访问接口
  * @author Administrator
@@ -21,21 +19,21 @@ public interface ProblemDao extends JpaRepository<Problem,String>,JpaSpecificati
      * 最新问题回答
      * @return
      */
-    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problemid and labelid=? order by replytime desc ")
+    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problem_id and label_id=? order by reply_time desc ")
     public Page<Problem> newlist(String labelid, Pageable pageable);
 
     /**
      * 热门
      * @return
      */
-    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problemid and labelid=? order by reply desc ")
+    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problem_id and label_id=? order by reply desc ")
     public Page<Problem> hotlist(String labelid, Pageable pageable);
 
     /**
      * 待回答问题
      * @return
      */
-    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problemid and labelid=?  and  reply=0 order by createtime desc ")
+    @Query(nativeQuery = true,value = "SELECT * from tb_problem ,tb_pl WHERE id=problem_id and label_id=?  and  reply=0 order by create_time desc ")
     public Page<Problem> waitlist(String labelid, Pageable pageable);
 
 }

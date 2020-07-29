@@ -14,5 +14,4 @@ public interface NoFriendDao extends JpaRepository<NoFriendDao, String> {
 
      NoFriend findByUserIdAndAndFriendId(String userId, String friendId);
 
-
 }

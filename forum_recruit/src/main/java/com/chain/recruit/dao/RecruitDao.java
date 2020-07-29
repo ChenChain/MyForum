@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface RecruitDao extends JpaRepository<Recruit,String>,JpaSpecificationExecutor<Recruit>{
     //where state=? order by createtime
-	public List<Recruit> findTop6ByStateOrderByCreatetimeDesc(String state);
+	public List<Recruit> findTop6ByStateOrderByCreateTimeDesc(String state);
 
     //where state!=? order by createtime
-	public List<Recruit> findTop6ByStateNotOrderByCreatetimeDesc(String state);
+	public List<Recruit> findTop6ByStateNotOrderByCreateTimeDesc(String state);
 
 }

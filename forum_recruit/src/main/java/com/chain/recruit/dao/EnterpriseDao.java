@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface EnterpriseDao extends JpaRepository<Enterprise,String>,JpaSpecificationExecutor<Enterprise>{
 	// where ishot = #{hot}
-     List<Enterprise> findByIshot(String ishot);
+     List<Enterprise> findByHot(String ishot);
 
 }
