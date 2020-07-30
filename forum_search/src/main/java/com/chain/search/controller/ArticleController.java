@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * @author chain
  * @date 2020/6/2
  */
+@Api("ArticleController")
 @RestController
 @RequestMapping("/article")
 @CrossOrigin
@@ -26,13 +27,15 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @PostMapping
-    public Result save(@RequestBody Article article){
+    @ApiOperation("保存文章")
+    @PostMapping("save")
+    public Result save(@ApiParam("文章") @RequestBody Article article){
         articleService.save(article);
         return new Result(true, StatusCode.OK,"添加成功");
     }
 
 
+    @ApiOperation("关键字查找")
     @GetMapping("/{key}/{pageNum}/{size}")
     public  Result findByKey(@ApiParam("关键字") @PathVariable String key,
                              @ApiParam("pageNum")@PathVariable int pageNum,

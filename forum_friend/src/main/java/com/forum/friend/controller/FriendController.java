@@ -33,7 +33,7 @@ public class FriendController {
 
     @ApiOperation("添加好友或者非好友")
     @PutMapping("like/{friendId}/{type}")
-    public Result addFriend(@PathVariable String friendId,@PathVariable String type){
+    public Result addFriend(@ApiParam("好友id") @PathVariable String friendId,@ApiOperation("类型") @PathVariable String type){
         //验证登录并拿到当前用户的id
         Claims token= (Claims) request.getAttribute("claims_user");
         if (token==null){
@@ -71,8 +71,9 @@ public class FriendController {
     /**
      * 删除好友关系
      */
+    @ApiOperation("删除好友关系")
     @DeleteMapping("/{friendId}")
-    public Result deleteFriend(@PathVariable String friendId){
+    public Result deleteFriend(@ApiOperation("好友id") @PathVariable String friendId){
         //验证登录并拿到当前用户的id
         Claims token= (Claims) request.getAttribute("claims_user");
         if (token==null){
