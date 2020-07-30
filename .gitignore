@@ -26,3 +26,13 @@ target/
 *.zip
 *.tar.gz
 *.rar
+
+
+
+META-INF/
+
+.project
+.settings/
+
+
+

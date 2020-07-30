@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author Administrator
  *
  */
+@Api("ProblemController")
 @RestController
 @CrossOrigin
 @RequestMapping("/problem")
@@ -40,8 +41,9 @@ public class ProblemController {
 	 * @param labelId
 	 * @return
 	 */
+	@ApiOperation("测试微服务调用方法")
 	@GetMapping("/find/{labelId}")
-	public Result findByIdz(@PathVariable("labelId") String labelId){
+	public Result findByIdz(@ApiParam("标签id") @PathVariable("labelId") String labelId){
 		return  baseClient.findById(labelId);
 	}
 
@@ -53,20 +55,23 @@ public class ProblemController {
 	 * @param size
 	 * @return
 	 */
+	@ApiOperation("问题的最新回答")
 	@GetMapping("/newlist/{labelId}/{page}/{size}")
-	public Result newList(@PathVariable String labelId,@PathVariable int page,@PathVariable int size) {
+	public Result newList(@ApiParam("标签id") @PathVariable String labelId,@ApiParam("页码") @PathVariable int page,@ApiParam("页大小") @PathVariable int size) {
 		Page<Problem> pageData=problemService.newlist(labelId,page,size);
 		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
 	}
 
+	@ApiOperation("问题的最热回答")
 	@GetMapping("/hostlist/{labelId}/{page}/{size}")
-	public Result hotList(@PathVariable String labelId,@PathVariable int page,@PathVariable int size) {
+	public Result hotList(@ApiParam("标签id") @PathVariable String labelId,@ApiParam("页码") @PathVariable int page,@ApiParam("页大小") @PathVariable int size) {
 		Page<Problem> pageData=problemService.hotlist(labelId,page,size);
 		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
 	}
 
+	@ApiOperation("等待回答")
 	@GetMapping("/waitlist/{labelId}/{page}/{size}")
-	public Result waitList(@PathVariable String labelId,@PathVariable int page,@PathVariable int size) {
+	public Result waitList(@ApiParam("标签id") @PathVariable String labelId,@ApiParam("页码") @PathVariable int page,@ApiParam("页大小") @PathVariable int size) {
 		Page<Problem> pageData=problemService.waitlist(labelId,page,size);
 		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
 	}
@@ -77,6 +82,7 @@ public class ProblemController {
 	 * 查询全部数据
 	 * @return
 	 */
+	@ApiOperation("查询全部数据")
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",problemService.findAll());
@@ -87,8 +93,9 @@ public class ProblemController {
 	 * @param id ID
 	 * @return
 	 */
+	@ApiOperation("根据id查询")
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
-	public Result findById(@PathVariable String id){
+	public Result findById(@ApiParam("id") @PathVariable String id){
 		return new Result(true,StatusCode.OK,"查询成功",problemService.findById(id));
 	}
 
@@ -100,8 +107,9 @@ public class ProblemController {
 	 * @param size 页大小
 	 * @return 分页结果
 	 */
+	@ApiOperation("分页+多条件查询")
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
-	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
+	public Result findSearch(@RequestBody Map searchMap ,@ApiParam("页码") @PathVariable int page,@ApiParam("页大小") @PathVariable int size){
 		Page<Problem> pageList = problemService.findSearch(searchMap, page, size);
 		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Problem>(pageList.getTotalElements(), pageList.getContent()) );
 	}
@@ -111,6 +119,7 @@ public class ProblemController {
      * @param searchMap
      * @return
      */
+	@ApiOperation("根据条件查询")
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",problemService.findSearch(searchMap));
@@ -120,6 +129,7 @@ public class ProblemController {
 	 * 增加
 	 * @param problem
 	 */
+	@ApiOperation("增加问题")
 	@RequestMapping(method=RequestMethod.POST)
 	public Result add(@RequestBody Problem problem  ){
 		String token= (String) httpServletRequest.getAttribute("claims_user");
@@ -134,8 +144,9 @@ public class ProblemController {
 	 * 修改
 	 * @param problem
 	 */
+	@ApiOperation("修改问题")
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Problem problem, @PathVariable String id ){
+	public Result update(@RequestBody Problem problem,@ApiParam("id") @PathVariable String id ){
 		problem.setId(id);
 		problemService.update(problem);		
 		return new Result(true,StatusCode.OK,"修改成功");
@@ -145,8 +156,9 @@ public class ProblemController {
 	 * 删除
 	 * @param id
 	 */
+	@ApiOperation("删除问题")
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
-	public Result delete(@PathVariable String id ){
+	public Result delete(@ApiOperation("id") @PathVariable String id ){
 		problemService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}

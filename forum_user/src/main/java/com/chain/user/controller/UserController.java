@@ -39,7 +39,7 @@ public class UserController {
 	 */
 	@ApiOperation("微服务调用更新关注数与粉丝数，-1或+1")
 	@PutMapping("/{userId}/{friendId}/{x}")
-	public void updateFansCountAndFollowCount(@ApiParam("用户id") @PathVariable String userId,@Param("关注朋友id") @PathVariable String friendId, @Param("-1或+1") @PathVariable int x){
+	public void updateFansCountAndFollowCount(@ApiParam("用户id") @PathVariable String userId,@ApiParam("关注朋友id") @PathVariable String friendId, @ApiParam("-1或+1") @PathVariable int x){
 		userService.updateFansCountAndFollowCount(x,userId,friendId);
 	}
 

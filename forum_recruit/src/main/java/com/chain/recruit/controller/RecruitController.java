@@ -17,6 +17,7 @@ import entity.StatusCode;
  * @author Administrator
  *
  */
+@Api("RecruitController")
 @RestController
 @CrossOrigin
 @RequestMapping("/recruit")
@@ -30,11 +31,13 @@ public class RecruitController {
 	 * 推荐职位
 	 * @return
 	 */
+	@ApiOperation("推荐职位")
 	@GetMapping("/search/recommend")
 	public Result recommend(){
 		return  new Result(true,StatusCode.OK,"查询成功",recruitService.recommend());
 	}
 
+	@ApiOperation("新一栏")
 	@GetMapping("/search/newlist")
 	public Result newlist(){
 		return  new Result(true,StatusCode.OK,"查询成功",recruitService.newlist());
@@ -46,6 +49,7 @@ public class RecruitController {
 	 * 查询全部数据
 	 * @return
 	 */
+	@ApiOperation("查询全部数据")
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",recruitService.findAll());
@@ -56,8 +60,9 @@ public class RecruitController {
 	 * @param id ID
 	 * @return
 	 */
+	@ApiOperation("根据id查询")
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
-	public Result findById(@PathVariable String id){
+	public Result findById(@ApiParam("id") @PathVariable String id){
 		return new Result(true,StatusCode.OK,"查询成功",recruitService.findById(id));
 	}
 
@@ -69,8 +74,9 @@ public class RecruitController {
 	 * @param size 页大小
 	 * @return 分页结果
 	 */
+	@ApiOperation("分页+多条件查询")
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
-	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
+	public Result findSearch(@RequestBody Map searchMap ,@ApiParam("页码") @PathVariable int page,@ApiParam("页大小") @PathVariable int size){
 		Page<Recruit> pageList = recruitService.findSearch(searchMap, page, size);
 		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Recruit>(pageList.getTotalElements(), pageList.getContent()) );
 	}
@@ -80,6 +86,7 @@ public class RecruitController {
      * @param searchMap
      * @return
      */
+	@ApiOperation("根据条件查询")
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",recruitService.findSearch(searchMap));
@@ -89,6 +96,7 @@ public class RecruitController {
 	 * 增加
 	 * @param recruit
 	 */
+	@ApiOperation("增加recruit")
 	@RequestMapping(method=RequestMethod.POST)
 	public Result add(@RequestBody Recruit recruit  ){
 		recruitService.add(recruit);
@@ -99,8 +107,9 @@ public class RecruitController {
 	 * 修改
 	 * @param recruit
 	 */
+	@ApiOperation("修改recruit")
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Recruit recruit, @PathVariable String id ){
+	public Result update(@RequestBody Recruit recruit,@ApiParam("id") @PathVariable String id ){
 		recruit.setId(id);
 		recruitService.update(recruit);		
 		return new Result(true,StatusCode.OK,"修改成功");
@@ -110,8 +119,9 @@ public class RecruitController {
 	 * 删除
 	 * @param id
 	 */
+	@ApiOperation("删除recruit")
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
-	public Result delete(@PathVariable String id ){
+	public Result delete(@ApiParam("id") @PathVariable String id ){
 		recruitService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
