@@ -3,6 +3,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.chain.qa.client.BaseClient;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -158,7 +161,7 @@ public class ProblemController {
 	 */
 	@ApiOperation("删除问题")
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
-	public Result delete(@ApiOperation("id") @PathVariable String id ){
+	public Result delete(@ApiParam("id") @PathVariable String id ){
 		problemService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}

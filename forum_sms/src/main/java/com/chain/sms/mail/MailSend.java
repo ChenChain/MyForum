@@ -20,7 +20,6 @@ public class MailSend {
         prop.setProperty("mail.transport.protocol", "smtp"); // 邮件发送协议
         prop.setProperty("mail.smtp.auth", "true"); // 需要验证用户名密码
 
-        // 关于QQ邮箱，还要设置SSL加密，加上以下代码即可
         MailSSLSocketFactory sf = new MailSSLSocketFactory();
         sf.setTrustAllHosts(false);
         prop.put("mail.smtp.ssl.enable", "true");
@@ -50,7 +49,6 @@ public class MailSend {
         //指明邮件的发件人
         message.setFrom(new InternetAddress(MAIL_QQ));
 
-        //指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 
         //邮件的标题

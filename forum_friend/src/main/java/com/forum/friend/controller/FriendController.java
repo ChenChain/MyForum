@@ -7,6 +7,7 @@ import entity.StatusCode;
 import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class FriendController {
 
     @ApiOperation("添加好友或者非好友")
     @PutMapping("like/{friendId}/{type}")
-    public Result addFriend(@ApiParam("好友id") @PathVariable String friendId,@ApiOperation("类型") @PathVariable String type){
+    public Result addFriend(@ApiParam("好友id") @PathVariable String friendId, @ApiParam("类型") @PathVariable String type){
         //验证登录并拿到当前用户的id
         Claims token= (Claims) request.getAttribute("claims_user");
         if (token==null){
@@ -73,7 +74,7 @@ public class FriendController {
      */
     @ApiOperation("删除好友关系")
     @DeleteMapping("/{friendId}")
-    public Result deleteFriend(@ApiOperation("好友id") @PathVariable String friendId){
+    public Result deleteFriend(@ApiParam("好友id") @PathVariable String friendId){
         //验证登录并拿到当前用户的id
         Claims token= (Claims) request.getAttribute("claims_user");
         if (token==null){
