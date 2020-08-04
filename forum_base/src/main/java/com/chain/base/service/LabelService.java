@@ -68,9 +68,9 @@ public class LabelService {
             public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                List<Predicate> list=new ArrayList<>();
 
-                if (label.getLabelname()!=null&&!"".equals(label.getLabelname())){
+                if (label.getLabelName()!=null&&!"".equals(label.getLabelName())){
                     //相当于 where labelname like %name%
-                    Predicate p=   criteriaBuilder.like(root.get("labelname").as(String.class), "%"+label.getLabelname()+"%");
+                    Predicate p=   criteriaBuilder.like(root.get("labelName").as(String.class), "%"+label.getLabelName()+"%");
                     list.add(p);
                 }
 
@@ -92,9 +92,9 @@ public class LabelService {
         Pageable pageable= PageRequest.of(page-1,size);
         return labelDao.findAll((Specification<Label>) (root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> list=new ArrayList<>();
-            if (label.getLabelname()!=null&&!"".equals(label.getLabelname())){
+            if (label.getLabelName()!=null&&!"".equals(label.getLabelName())){
 
-                Predicate p=   criteriaBuilder.like(root.get("labelname").as(String.class), "%"+label.getLabelname()+"%");
+                Predicate p=   criteriaBuilder.like(root.get("labelName").as(String.class), "%"+label.getLabelName()+"%");
                 list.add(p);
             }
             if (label.getState()!=null&&!"".equals(label.getState())){
