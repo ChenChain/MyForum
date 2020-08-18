@@ -9,14 +9,10 @@ spring:
   cloud:
     config:
       server:
-        git:
-          uri: https://gitee.com/chainchain/forum_config_file.git
-          password: cq19990117
-          username: 1759683080@qq.com
-  rabbitmq:
-    host: 47.98.135.4
-    username: admin
-    password: admin
+#        git:
+  
+#  rabbitmq:
+
 
 management:
   endpoints:
